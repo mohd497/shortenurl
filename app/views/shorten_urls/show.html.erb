@@ -1,0 +1,10 @@
+<%= form_for @res , url: create_url_path, remote: true  do |f|  %>
+
+    <%= f.text_field :url %>
+    <%= f.submit "SHORTEN" %>
+
+<% end %>
+
+<div id="result_div">
+
+</div>
