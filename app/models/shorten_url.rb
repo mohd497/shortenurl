@@ -10,7 +10,7 @@ class ShortenUrl < ApplicationRecord
 
   # we'll check if provided url is valid or not
   def check_url_validation
-    errors.add(:url, "is not valid please insert a proper url") unless UrlShort.is_valid? (url)
+    errors.add(:url, I18n.t('url_not_proper')) unless UrlShort.is_valid? (url)
   end
 
   # we'll rely on the DB to make sure the unique key is really unique.

@@ -9,6 +9,23 @@
   </head>
 
   <body>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          ShortenU
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %> alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <%= value %></div>
+  <% end %>
+
     <%= yield %>
   </body>
 </html>

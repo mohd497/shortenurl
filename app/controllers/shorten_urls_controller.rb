@@ -25,6 +25,7 @@ class ShortenUrlsController < ApplicationController
     if @res
       redirect_to @res[:url] #if correct url redirect to given url
     else
+      flash[:danger] = I18n.t('url_doesnt_exist')
       redirect_to root_path #if url not in database or expired redirect to root url
     end
   end

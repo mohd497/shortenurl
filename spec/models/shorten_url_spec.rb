@@ -17,16 +17,13 @@ RSpec.describe ShortenUrl, type: :model do
 
   it "should fetch url" do
     shorten_url = FactoryGirl.create(:shorten_url)
-    hash_url = {:url => "http://www.test.com", :shortened_url=>"example.com/#{shorten_url.unique_key}"}
+    hash_url = {:url => 'http://www.test.com', :shortened_url=>"example.com/#{shorten_url.unique_key}"}
 
     expect(ShortenUrl.fetch_with_key(shorten_url.unique_key, 'example.com')).to eq hash_url
   end
 
   it "should merge base url with key" do
-    shorten_url = FactoryGirl.create(:shorten_url)
-    hash_url = {:url => "http://www.test.com", :shortened_url=>"example.com/#{shorten_url.unique_key}"}
-
-    expect(ShortenUrl.fetch_with_key(shorten_url.unique_key, 'example.com')).to eq hash_url
+    expect(ShortenUrl.merge_url('test', 'example.com')).to eq 'example.com/test'
   end
 
 end

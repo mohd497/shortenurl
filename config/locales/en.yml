@@ -30,4 +30,5 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  url_doesnt_exist: "It seems like url doesn't exist or have been expired."
+  url_not_proper: "is not valid please insert a proper url"

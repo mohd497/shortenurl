@@ -9,7 +9,7 @@ RSpec.describe ShortenUrlsController, type: :controller do
       expect(response).to render_template("show")
     end
 
-    it "assign a new shorten url" do
+    it "assign a new shorten url to res" do
       get :show
       expect(assigns(:res)).to be_a_new(ShortenUrl)
     end
@@ -21,9 +21,14 @@ RSpec.describe ShortenUrlsController, type: :controller do
     it "should increase the count if url is valid" do
       @shorten_url_params = { url: 'http://www.test.com' }
       expect {
-
         post :create, params: { shorten_url: @shorten_url_params }
       }.to change(ShortenUrl, :count).by(1)
+    end
+
+    it "should render shorten js template" do
+      @shorten_url_params = { url: 'http://www.test.com' }
+      post :create, params: { shorten_url: @shorten_url_params }, :format => "js"
+      expect(response).to render_template("shorten_urls/shorten")
     end
 
     it "should not increase the count if url is not valid" do
@@ -45,9 +50,14 @@ RSpec.describe ShortenUrlsController, type: :controller do
       response.should redirect_to 'http://www.test.com'
     end
 
-    it "should redirect to root if wrong url given" do
+    it "should redirect to root if wrong url is given" do
       get :fetch_page, params: { url: 'test' }
       response.should redirect_to root_path
+    end
+
+    it "should flash danger if wrong url is given" do
+      get :fetch_page, params: { url: 'test' }
+      expect(flash[:danger]).to match(I18n.t("url_doesnt_exist"))
     end
 
   end
