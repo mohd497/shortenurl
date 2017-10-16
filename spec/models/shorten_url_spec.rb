@@ -25,5 +25,4 @@ RSpec.describe ShortenUrl, type: :model do
   it "should merge base url with key" do
     expect(ShortenUrl.merge_url('test', 'example.com')).to eq 'example.com/test'
   end
-
 end

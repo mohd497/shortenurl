@@ -70,7 +70,4 @@ RSpec.describe ShortenUrlsController, type: :controller do
     end
 
   end
-
-
-
 end
