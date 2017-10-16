@@ -1,24 +1,37 @@
-# README
+## ShortenUrl
+This project will shorten provided urls and also inflate shorten url to its original form
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### System dependencies
+* Ruby 2.4.2
 
-Things you may want to cover:
+### Gems 
+* rails 5.1.4
+* bootstrap-sass
+* rspec-rails 3.6
 
-* Ruby version
+### Setup guide
+* install the ruby version 2.4.2
+* install rails 5.1.4
+* git clone the repo
+* cd shortenurl
 
-* System dependencies
+```console
+bundle install
+rake db:create db:migrate 
+rails s
+```
+### Deploy
+* depoyed on AWS lightsail instance @ http://54.197.23.63:3000/
 
-* Configuration
+### Tests
 
-* Database creation
+```console
+bundle exec rspec
+```
+### What was done
+* make url short
+* inflate url (run on browser)
+* unit tests
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### What is remaining
+* make use of more robust database like pg or mysql
